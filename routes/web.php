@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,20 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// All listings
 Route::get('/', function () {
     return view('listings', [
         'heading' => 'Lastest Headings',
-        'listings' => [
-            [
-                'id' => 1,
-                'title'=> 'Frontend Developer',
-                'description' => 'Carry out all the responsibilities of a frontend developer'
-            ],
-            [
-                'id' => 2,
-                'title'=> 'Backend Developer',
-                'description' => 'Carry out all the responsibilities of a backend developer'
-            ]
-        ]
+        'listings' => Listing::all()
     ]);
 });
+
+//Single listing
+
+Route::get('/listing/{id}', function($id) {
+    return view('listing', [
+        'listing' => Listing::find($id)
+    ]);
+});
+
+
