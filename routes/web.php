@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('listings', [
+        'heading' => 'Lastest Headings',
+        'listings' => [
+            [
+                'id' => 1,
+                'title'=> 'Frontend Developer',
+                'description' => 'Carry out all the responsibilities of a frontend developer'
+            ],
+            [
+                'id' => 2,
+                'title'=> 'Backend Developer',
+                'description' => 'Carry out all the responsibilities of a backend developer'
+            ]
+        ]
+    ]);
 });
